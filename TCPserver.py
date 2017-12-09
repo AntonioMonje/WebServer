@@ -13,9 +13,11 @@ while True:
     try:
         sentence = connectionSocket.recv(1024).decode()
         parser = sentence.split()[1]#get the file name
+
         print('--------------------------------')
         print('File Name: ')
         print(parser)#display the File name you got
+
         print('HTML FILE BELOW: ')
         file = open(parser[1:])
         file_data = file.read()
@@ -25,13 +27,7 @@ while True:
         Content-Type: text/html
 
         <html>
-        <head>
-        <title>Assignment Complete!</title>
-        </head>
-        <body>
-        FILE FOUND...
-        PROGRAM FINISHED
-        </body>
+        Assignment Complete!
         </html>""".encode());
         print('PROGRAM FINISHED')
         print('--------------------------------')
