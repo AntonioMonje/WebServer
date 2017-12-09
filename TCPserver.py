@@ -17,16 +17,16 @@ while True:
         print('File Name: ')
         print(parser)#display the File name you got
         print('HTML FILE BELOW: ')
-        f = open(parser[1:])
-        data = f.read()
-        print(data)
+        file = open(parser[1:])
+        file_data = file.read()
+        print(file_data)
 
         connectionSocket.send("""HTTP/1.0 OK
         Content-Type: text/html
 
         <html>
         <head>
-        <title>Assingment Complete!</title>
+        <title>Assignment Complete!</title>
         </head>
         <body>
         FILE FOUND...
