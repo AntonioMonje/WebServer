@@ -42,5 +42,4 @@ while True:
         connectionSocket.send('ERROR 404: FILE NOT FOUND!')
         connectionSocket.close()
         break
-serverSocket.close()
-pass
+    serverSocket.close()
