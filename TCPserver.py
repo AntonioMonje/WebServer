@@ -12,16 +12,16 @@ while True:
     connectionSocket, addr = serverSocket.accept()
     try:
         sentence = connectionSocket.recv(1024).decode()
-        parser = sentence.split()[1]#get the file name
+        filename = sentence.split()[1]#get the file name
 
         print('--------------------------------')
         print('File Name: ')
-        print(parser)#display the File name you got
+        print(filename)#display the File name you got
 
         print('HTML FILE BELOW: ')
-        file = open(parser[1:])
-        file_data = file.read()
-        print(file_data)
+        f = open(filename[1:])
+        outputdata = f.read()
+        print(outputdata)
 
         connectionSocket.send("""HTTP/1.0 OK
         Content-Type: text/html
@@ -31,6 +31,9 @@ while True:
         </html>""".encode());
         print('PROGRAM FINISHED')
         print('--------------------------------')
+        connectionSocket.send('\n')
+        for i in range(0, len(outputdata)):
+            connectionSocket.send(outputdata[i])
         connectionSocket.close()
         break
 
@@ -39,3 +42,5 @@ while True:
         connectionSocket.send('ERROR 404: FILE NOT FOUND!')
         connectionSocket.close()
         break
+    serverSocket.close()
+    pass
